@@ -71,9 +71,11 @@ Ihr müsst jede Entscheidung in der Präsentation ohne Agent erklären können.
   - Gibt es Merkmale, die selbst schon das Ergebnis eines früheren Tarifs sind?
   - Gibt es Merkmale, die ihr aus ethischen oder regulatorischen Gründen nicht verwenden würdet?
 
-## Teil 4 – Tarif-App
+## Teil 4 – Tarif-Dashboard
 
-Entwickelt eine einfache App, z. B. mit Streamlit, Dash oder Gradio. Darin wählt man ein Kundenprofil oder eine Kundengruppe aus, und die App zeigt:
+Erstellt keine App, sondern ein Dashboard, das über GitHub Pages veröffentlicht wird. GitHub Pages liefert nur statische Dateien aus (HTML, CSS, JavaScript), es läuft dort kein Python. Eure Pipeline erzeugt das Dashboard deshalb aus den Modellergebnissen, z. B. mit Plotly, Altair oder Quarto, und legt es im Repo ab (z. B. im Ordner `docs/`).
+
+Im Dashboard wählt man ein Kundenprofil oder eine Kundengruppe aus, und es zeigt:
 
 - die erwartete Schadenhäufigkeit pro Jahr,
 - die erwartete Schadenhöhe,
@@ -86,10 +88,10 @@ Entwickelt eine einfache App, z. B. mit Streamlit, Dash oder Gradio. Darin wähl
 Alles liegt im Git-Repo. Stichtag ist der letzte Commit auf `main`.
 
 - Reproduzierbare Pipeline: Nach `pip install -r requirements.txt` erzeugt ein dokumentierter Befehl alle Ergebnisse aus den Rohdaten.
-- Die App startet nach `git clone` mit einem Befehl, z. B. `streamlit run app/app.py`. Zusätzlich ist sie öffentlich erreichbar, z. B. über Streamlit Community Cloud. Der Link steht im README.
+- Das Dashboard wird von der Pipeline erzeugt und liegt im Repo. Es ist über GitHub Pages öffentlich erreichbar. Der Link steht im README.
 - `ENTSCHEIDUNGEN.md` ist vollständig ausgefüllt.
 - Ein Bericht von max. [X] Seiten mit euren Entscheidungen, Ergebnissen und Limitationen.
-- Eine Präsentation von [X] Minuten inkl. Live-Demo der App.
+- Eine Präsentation von [X] Minuten inkl. Live-Demo des Dashboards.
 
 ## Bewertung
 
@@ -97,6 +99,6 @@ Bewertet werden vor allem:
 
 - die Nachvollziehbarkeit und Begründung eurer Entscheidungen,
 - die fachliche Korrektheit,
-- die Erklärbarkeit des Preises in der App.
+- die Erklärbarkeit des Preises im Dashboard.
 
 Die reine Modellgüte zählt weniger.
