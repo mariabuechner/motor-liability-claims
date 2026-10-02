@@ -5,7 +5,7 @@ Studierendenprojekt: Tarifmodell für eine Motorfahrzeug-Haftpflichtversicherung
 ## Struktur
 
 - `data/raw/` – Rohdaten (unverändert, siehe `data/raw/README.md`)
-- `data/processed/` – bereinigte Daten und Zwischenergebnisse
+- `data/processed/` – aufbereitete Daten und Zwischenergebnisse
 - `ENTSCHEIDUNGEN.md` – Logbuch aller fachlichen Entscheidungen
 
 ## Ausführen

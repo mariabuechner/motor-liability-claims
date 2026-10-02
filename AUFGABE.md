@@ -21,20 +21,20 @@ freq = pd.read_csv("data/raw/freMTPL2freq.csv")
 sev  = pd.read_csv("data/raw/freMTPL2sev.csv")
 ```
 
-Die Dateien in `data/raw/` werden nie verändert. Jede Bereinigung passiert im Code. Zwischenergebnisse speichert ihr in `data/processed/`.
+Die Dateien in `data/raw/` bleiben unverändert. Alles, was ihr mit den Daten macht, passiert nachvollziehbar im Code. Aufbereitete Daten und Zwischenergebnisse speichert ihr in `data/processed/`.
 
 ## Spielregeln
 
-- Alles wird von Grund auf in Python mit den Rohdaten erarbeitet: Bereinigung, Analyse, Modellwahl, Parameterschätzung.
+- Alles wird von Grund auf in Python mit den Rohdaten erarbeitet: Datenaufbereitung, Analyse, Modellwahl, Parameterschätzung.
 - Es ist **nicht** erlaubt, Modellspezifikationen, Parameter, Feature-Transformationen oder Ergebnisse aus bestehenden Studien, Papers, Tutorials, Kaggle-Notebooks oder Repositories zu diesem Datensatz zu übernehmen.
 - Allgemeine Dokumentation von Bibliotheken (pandas, scikit-learn, statsmodels usw.) dürft ihr selbstverständlich nutzen.
 - Jede wesentliche Entscheidung muss aus euren eigenen Analysen der Daten heraus begründet werden.
 
 ### Arbeiten mit dem Coding-Agenten
 
-Ihr dürft den Agenten für Code nutzen. Die fachlichen Entscheidungen trefft und begründet aber ihr:
+Ihr dürft den Agenten für Code nutzen. Die fachlichen Entscheidungen trefft und begründet aber ihr, zum Beispiel:
 
-- Wie wird bereinigt?
+- Welche Daten verwendet ihr in welcher Form?
 - Welche Variablen werden wie gruppiert oder transformiert?
 - Welches Modell, welche Verlustfunktion, welche Metrik?
 
@@ -46,32 +46,38 @@ Haltet jede dieser Entscheidungen in `ENTSCHEIDUNGEN.md` fest. Zu jedem Eintrag 
 
 Ihr müsst jede Entscheidung in der Präsentation ohne Agent erklären können.
 
-## Teil 1 – Datenverständnis und Bereinigung
+## Teil 1 – Die Daten verstehen und nutzbar machen
 
-- Verschafft euch einen Überblick über alle Variablen: Verteilungen, fehlende oder unplausible Werte, Ausreisser.
-- Prüft, ob die beiden Datensätze konsistent zueinander sind.
-- Dokumentiert jede Bereinigung mit Begründung und Anzahl betroffener Zeilen.
+**Ziel:** Ihr kennt eure Daten so gut, dass ihr ihnen für die Preisberechnung vertrauen könnt, und ihr könnt belegen, warum.
 
-## Teil 2 – Visualisierung der Schadenfrequenz
+- Analysiert beide Datensätze und macht sie bereit, um damit zu arbeiten.
+- Am Ende steht ein Datenstand, auf dem Teil 2 bis 4 aufbauen. Er entsteht reproduzierbar per Code aus den Rohdaten.
+- Jeder Schritt von den Rohdaten zu diesem Datenstand ist in `ENTSCHEIDUNGEN.md` begründet, einschliesslich seiner Auswirkung auf die Daten.
 
-- Definiert sauber, was „Schadenfrequenz“ ist. Berücksichtigt, dass Policen unterschiedlich lange versichert waren.
-- Visualisiert die Frequenz insgesamt und in Abhängigkeit jedes Merkmals.
-- Achtet darauf, wie viel Exposure hinter jedem Datenpunkt steckt. Eine hohe Frequenz in einer winzigen Gruppe ist wenig aussagekräftig.
-- Visualisiert auch die Verteilung der Schadenhöhen.
+## Teil 2 – Schadenfrequenz und Schadenhöhe sichtbar machen
+
+**Ziel:** Jemand ohne Statistikkenntnisse versteht anhand eurer Grafiken, wie häufig und wie teuer Schäden sind und welche Merkmale damit zusammenhängen.
+
+- Legt fest, was ihr unter „Schadenfrequenz“ versteht, und begründet die Definition.
+- Zeigt die Frequenz insgesamt und in Abhängigkeit jedes Merkmals sowie die Verteilung der Schadenhöhen.
+- Aus euren Grafiken geht auch hervor, wie belastbar die einzelnen Aussagen sind.
 
 ## Teil 3 – Welche Merkmale beeinflussen den Preis?
 
-- Erstellt ein Modell für die erwartete Schadenhäufigkeit und eines für die erwartete Schadenhöhe. Alternativ ein Modell für den erwarteten Schadenaufwand direkt, wenn ihr das gut begründen könnt.
-- Überlegt euch, welche Art von Problem das ist und welche Verteilungsannahmen und Verlustfunktionen dazu passen. Ist es Klassifikation, Regression, etwas anderes?
-- Vergleicht mindestens zwei Modellansätze unterschiedlicher Komplexität, z. B. ein gut interpretierbares und ein flexibleres Modell.
-- Evaluiert die Modelle auf Daten, die für das Training nicht verwendet wurden, mit einer begründet gewählten Metrik.
-- Quantifiziert, welche Merkmale wie stark wirken und in welche Richtung.
-- Diskutiert kritisch:
-  - Sind Merkmale stark miteinander korreliert?
+**Ziel:** Ihr könnt quantitativ belegen, welche Merkmale den erwarteten Schadenaufwand treiben, wie stark und in welche Richtung, und wie verlässlich eure Prognosen für neue Kundinnen und Kunden sind.
+
+- Ihr modelliert die erwartete Schadenhäufigkeit und die erwartete Schadenhöhe getrennt oder den erwarteten Schadenaufwand direkt. Die Wahl begründet ihr.
+- Modelltyp, Verteilungsannahmen und Verlustfunktion leitet ihr aus der Art des Problems und aus euren Daten ab.
+- Ihr vergleicht mindestens zwei Ansätze unterschiedlicher Komplexität, z. B. ein gut interpretierbares und ein flexibleres Modell.
+- Ihr belegt die Prognosegüte auf Daten, die nicht für das Training verwendet wurden, mit einer begründet gewählten Metrik.
+- Euer Ergebnis hält einer kritischen Prüfung stand. Beantwortet dazu mindestens diese Fragen:
+  - Sind Merkmale stark miteinander korreliert, und was bedeutet das für eure Aussagen?
   - Gibt es Merkmale, die selbst schon das Ergebnis eines früheren Tarifs sind?
   - Gibt es Merkmale, die ihr aus ethischen oder regulatorischen Gründen nicht verwenden würdet?
 
 ## Teil 4 – Tarif-Dashboard
+
+**Ziel:** Jemand aus dem Vertrieb sieht für ein beliebiges Kundenprofil den Preis und versteht, wie er zustande kommt.
 
 Erstellt keine App, sondern ein Dashboard, das über GitHub Pages veröffentlicht wird. GitHub Pages liefert nur statische Dateien aus (HTML, CSS, JavaScript), es läuft dort kein Python. Eure Pipeline erzeugt das Dashboard deshalb aus den Modellergebnissen, z. B. mit Plotly, Altair oder Quarto, und legt es im Repo ab (z. B. im Ordner `docs/`).
 

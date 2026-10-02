@@ -1,6 +1,6 @@
 # Entscheidungs-Logbuch
 
-Jede fachliche Entscheidung bekommt einen eigenen Eintrag: Bereinigung, Gruppierung oder Transformation von Variablen, Modellwahl, Verlustfunktion, Metrik, Zuschläge usw. Die Einträge werden von euch selbst formuliert, nicht vom Agenten.
+Jede fachliche Entscheidung bekommt einen eigenen Eintrag: Datenaufbereitung, Gruppierung oder Transformation von Variablen, Modellwahl, Verlustfunktion, Metrik, Zuschläge usw. Die Einträge werden von euch selbst formuliert, nicht vom Agenten.
 
 ---
 
