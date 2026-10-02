@@ -12,8 +12,8 @@ Ihr arbeitet in einer Kopie dieses Repos mit Claude Code (Web) oder Codex (Web).
 
 | Datei | Inhalt | Erwarteter Umfang |
 |---|---|---|
-| `freMTPL2freq.csv` | Policen: Merkmale zu Fahrer, Fahrzeug und Wohnort, Versicherungsdauer (`Exposure`, in Jahren), Anzahl gemeldeter Schäden (`ClaimNb`) | 678'013 Zeilen × 12 Spalten |
-| `freMTPL2sev.csv` | Einzelne Schadenbeträge (`ClaimAmount`), verknüpfbar über `IDpol` | 26'639 Zeilen × 2 Spalten |
+| `freMTPL2freq.csv` | Policen: Merkmale zu Fahrer, Fahrzeug und Wohnort, Versicherungsdauer (`Exposure`, in Jahren), Anzahl gemeldeter Schäden (`ClaimNb`) | 677'991 Zeilen × 12 Spalten |
+| `freMTPL2sev.csv` | Einzelne Schadenbeträge (`ClaimAmount`), verknüpfbar über `IDpol` | 26'444 Zeilen × 2 Spalten |
 
 ```python
 import pandas as pd
